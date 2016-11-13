@@ -67,7 +67,7 @@ The MNIST data is given in a [unique data format](http://yann.lecun.com/exdb/mni
 >    ........ 
 >    xxxx     unsigned byte   ??               pixel
 
-The [`idxreader`](/code/idxreader.py) modules can be used to read the MNIST IDX files as a [`numpy.array`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html).
+The [`idxreader`](/code/idxreader.py) module can be used to read the MNIST IDX files as a [`numpy.array`](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html).
 
 Usage example:
 
