@@ -73,9 +73,9 @@ Usage example:
 ```python
 import idxreader
 
-training_labels = idxreader.read(1, "/path/to/train-labels-idx1-ubyte")
+training_labels = idxreader.read("/path/to/train-labels-idx1-ubyte")
 # training_labels is a 1xN numpy array
 
-training_images = idxreader.read(3, "/path/to/train-images-idx3-ubyte")
+training_images = idxreader.read("/path/to/train-images-idx3-ubyte")
 # training_images is a MxN numpy array
 ```
