@@ -79,3 +79,6 @@ training_labels = idxreader.read("/path/to/train-labels-idx1-ubyte")
 training_images = idxreader.read("/path/to/train-images-idx3-ubyte")
 # training_images is a MxN numpy array
 ```
+
+### 20 News Groups
+The 20 News Group data is loaded with the [`sklearn.datasets.fetch_20newsgroups`](http://scikit-learn.org/stable/modules/generated/sklearn.datasets.fetch_20newsgroups.html#sklearn.datasets.fetch_20newsgroups) function.
