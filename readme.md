@@ -6,6 +6,7 @@ This project aims to:
 - Read in data from the MNIST data set and the 20 News Groups dataset
 - Use gradient descent to develop a classifier, and test it
 - Use a 2-layer neural network to develop a classifier, and test it
+- Display graphs representing the effectiveness of each classifier
 
 ### Training and Testing Models
 1) Divide the data: 80% training data, 20% testing data. Further divide the testing data into 80% testing data, 20% validation data.
