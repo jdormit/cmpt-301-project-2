@@ -15,7 +15,7 @@ This project aims to:
 4. Test the model using the testing data.
 
 ## Reading the Data
-Different processes are required to load the MNIST data and the 20 News Groups set
+Different processes are required to load the MNIST data and the 20 News Groups set.
 
 ### MNIST
 The MNIST data is given in a [unique data format](http://yann.lecun.com/exdb/mnist/):
