@@ -52,13 +52,13 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
         accuracies.append(gd_model.test(test_data, test_labels))
     print "\n"
 
-    mnist_iter_plot = figure.add_subplot(221)
-    mnist_iter_plot.set_title("Vary Iterations")
+    iter_plot = figure.add_subplot(221)
+    iter_plot.set_title("Vary Iterations")
     plt.ylabel("Accuracy")
     plt.xlabel("Iterations")
     plt.plot(iterations, accuracies, "o")
     for point in zip(iterations, accuracies):
-        mnist_iter_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
+        iter_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
 
     # Vary learning rate
     print "\nTest varying the learning rate"
@@ -74,13 +74,13 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
         accuracies.append(gd_model.test(test_data, test_labels))
     print "\n"
 
-    mnist_learning_rate_plot = figure.add_subplot(222)
-    mnist_learning_rate_plot.set_title("Vary Learning Rate")
+    learning_rate_plot = figure.add_subplot(222)
+    learning_rate_plot.set_title("Vary Learning Rate")
     plt.ylabel("Accuracy")
     plt.xlabel("Learning Rate")
     plt.plot(learning_rates, accuracies, "o")
     for point in zip(learning_rates, accuracies):
-        mnist_learning_rate_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
+        learning_rate_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
 
     # Vary regularizer
     print "\nTest varying the regularizer alpha"
@@ -97,13 +97,13 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
         accuracies.append(gd_model.test(test_data, test_labels))
     print "\n"
 
-    mnist_alpha_plot = figure.add_subplot(223)
-    mnist_alpha_plot.set_title("Vary Regularizer Alpha")
+    alpha_plot = figure.add_subplot(223)
+    alpha_plot.set_title("Vary Regularizer Alpha")
     plt.ylabel("Accuracy")
     plt.xlabel("Regularizer Alpha")
     plt.plot(alphas, accuracies, "o")
     for point in zip(alphas, accuracies):
-        mnist_alpha_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
+        alpha_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
 
     # Vary loss function
     print "\nTest varying the loss function"
