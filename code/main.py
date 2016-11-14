@@ -208,14 +208,16 @@ def test_and_plot_neural_network(training_data, training_labels, test_data, test
 
 
 def main():
-    print "\nGradient Descent: MNIST Data"
-    print "============================"
+    print "\nLoading MNIST data..."
     mnist_training_data, mnist_training_labels, mnist_testing_data, mnist_testing_labels = load_MNIST_data()
 
     # Convert the image data into two-dimensional arrays
     # by flattening each image to a 1-dimensional array
     mnist_training_data = mnist_training_data.reshape(len(mnist_training_data), -1)
     mnist_testing_data = mnist_testing_data.reshape(len(mnist_testing_data), -1)
+
+    print "\nGradient Descent: MNIST Data"
+    print "============================"
 
     mnist_gradient_descent_fig = plt.figure(1, figsize=(10,10))
     mnist_gradient_descent_fig.suptitle("MNIST Data: Gradient Descent Model")
