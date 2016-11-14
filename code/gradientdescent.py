@@ -12,7 +12,7 @@ class GradientDescent:
     """
     A wrapper class around sklearn.linear_model.SGDClassifier.
     """
-    def __init__(self, loss='log', penalty='none', n_iter=5, eta0=0.0):
+    def __init__(self, loss='log', penalty='none', n_iter=5, eta0=0.0, alpha=0.0001):
         """
         The GradientDescent constructor
 
@@ -23,8 +23,14 @@ class GradientDescent:
                     for details
             penalty -- A string representing the type of regularizer to use. Defaults to 'none'.
                        Options include 'l2', 'l1', 'elasticnet', or 'none'.
+            n_iter -- An integer representing the number of times to iterate over the data while
+                      training the algorithm. Defaults to 5.
+            eta0 -- A float representing the learning rate. If left at the default 0.0 value,
+                    it is not used.
+            alpha -- A float representing the regularizer alpha. Defaults to 0.0001.
         """
-        self.classifier = SGDClassifier(loss=loss, penalty=penalty, n_jobs=-1, learning_rate='constant')
+        learning_rate = 'constant' if eta0 > 0.0 else 'optimal'
+        self.classifier = SGDClassifier(loss=loss, penalty=penalty, n_jobs=-1, learning_rate=learning_rate, eta0=eta0)
 
     def train(self, data, labels):
         """
