@@ -7,6 +7,8 @@ of the IDX format and http://yann.lecun.com/exdb/mnist/ for a specific example
 Author: Jeremy Dormitzer
 """
 
+__all__ = ["read"]
+
 import struct
 from array import array
 from numpy import reshape
