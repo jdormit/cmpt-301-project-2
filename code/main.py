@@ -4,6 +4,7 @@ Load the data and train the models, varying the hyperparameters. Output graphs o
 
 import idxreader
 from gradientdescent import GradientDescent as gradient_descent_model
+from neuralnetwork import NeuralNetwork as neural_network_model
 from os import path
 from sys import stdout
 from matplotlib import pyplot as plt
@@ -122,14 +123,88 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
         x_values.append(i)
     print "\n"
 
-    mnist_loss_plot = figure.add_subplot(224)
-    mnist_loss_plot.set_title("Vary Loss Function")
+    loss_plot = figure.add_subplot(224)
+    loss_plot.set_title("Vary Loss Function")
     plt.ylabel("Accuracy")
     plt.xlabel("Loss Function")
     plt.plot(x_values, accuracies, "o")
     plt.xticks(x_values, loss_functions)
     for point in zip(x_values, accuracies):
-        mnist_loss_plot.annotate("{0}".format(point[1]), xy=point, xytext=(3, 0), textcoords="offset points")
+        loss_plot.annotate("{0}".format(point[1]), xy=point, xytext=(3, 0), textcoords="offset points")
+
+
+def test_and_plot_neural_network(training_data, training_labels, test_data, test_labels, figure):
+    # Vary the number of hidden nodes
+    print "\nTest varying the number of hidden nodes"
+    print "---------------------------------------"
+
+    hidden_nodes = [2, 5, 10]
+    accuracies = []
+
+    for i, hidden_node in enumerate(hidden_nodes):
+        stdout.write("\rTesting model {0} of {1}".format(i+1, len(hidden_nodes)))
+        stdout.flush()
+        nn_model = neural_network_model(hidden_layer_sizes=(hidden_node,))
+        nn_model.train(training_data, training_labels)
+        accuracies.append(nn_model.test(test_data, test_labels))
+    print "\n"
+
+    hidden_nodes_plot = figure.add_subplot(131)
+    hidden_nodes_plot.set_title("Vary # of Hidden Nodes")
+    plt.ylabel("Accuracy")
+    plt.xlabel("Hidden Nodes")
+    plt.plot(hidden_nodes, accuracies, "o")
+    for point in zip(hidden_nodes, accuracies):
+        hidden_nodes_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
+
+    # Vary the learning rate
+    print "\nTest varying the learning rate"
+    print "------------------------------"
+
+    learning_rates = ["constant", "adaptive"]
+    x_values = []
+    accuracies = []
+
+    for i, learning_rate in enumerate(learning_rates):
+        stdout.write("\rTesting model {0} of {1}".format(i+1, len(learning_rates)))
+        stdout.flush()
+        nn_model = neural_network_model(learning_rate=learning_rate)
+        nn_model.train(training_data, training_labels)
+        x_values.append(i)
+        accuracies.append(nn_model.test(test_data, test_labels))
+    print "\n"
+
+    learning_rate_plot = figure.add_subplot(132)
+    learning_rate_plot.set_title("Vary Learning Rate")
+    plt.ylabel("Accuracy")
+    plt.xlabel("Learning Rate")
+    plt.xticks(x_values, learning_rates)
+    plt.plot(x_values, accuracies, "o")
+    for point in zip(x_values, accuracies):
+        learning_rate_plot.annotate("{0}".format(point[1]), xy=point, xytext=(3, 0), textcoords="offset points")
+
+    # Vary the regularizer alpha
+    print "\nTest varying the regularizer alpha"
+    print "----------------------------------"
+
+    alphas = [0.0001, 0.001, 0.005, 0.01, 0.05, 0.1]
+    accuracies = []
+
+    for i, alpha in enumerate(alphas):
+        stdout.write("\rTesting model {0} of {1}".format(i+1, len(alphas)))
+        stdout.flush()
+        nn_model = neural_network_model(alpha=alpha)
+        nn_model.train(training_data, training_labels)
+        accuracies.append(nn_model.test(test_data, test_labels))
+    print "\n"
+
+    alpha_plot = figure.add_subplot(133)
+    alpha_plot.set_title("Vary Regularizer Alpha")
+    plt.ylabel("Accuracy")
+    plt.xlabel("Regularizer Alpha")
+    plt.plot(alphas, accuracies, "o")
+    for point in zip(alphas, accuracies):
+        alpha_plot.annotate("{0}, {1}".format(*point), xy=point, xytext=(3, 0), textcoords="offset points")
 
 
 def main():
@@ -146,6 +221,14 @@ def main():
     mnist_gradient_descent_fig.suptitle("MNIST Data: Gradient Descent Model")
 
     test_and_plot_gradient_descent(mnist_training_data, mnist_training_labels, mnist_testing_data, mnist_testing_labels, mnist_gradient_descent_fig)
+
+    print "\nNeural Network: MNIST Data"
+    print "=========================="
+
+    mnist_neural_network_fig = plt.figure(2, figsize=(10,10))
+    mnist_neural_network_fig.suptitle("MNIST Data: Neural Network Model")
+
+    test_and_plot_neural_network(mnist_training_data, mnist_training_labels, mnist_testing_data, mnist_testing_labels, mnist_neural_network_fig)
 
     plt.subplots_adjust(wspace=0.4, hspace=0.4)
     plt.show()
