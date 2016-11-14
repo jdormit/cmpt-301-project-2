@@ -40,7 +40,7 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
     """
     # Vary iterations
     print "\nTest varying the iterations"
-    print "==========================="
+    print "---------------------------"
 
     iterations = [1, 2, 3, 10, 50, 100]
     accuracies = []
@@ -62,7 +62,7 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
 
     # Vary learning rate
     print "\nTest varying the learning rate"
-    print "=============================="
+    print "------------------------------"
 
     learning_rates = [0.1, 0.3, 0.6, 0.9]
     accuracies = []
@@ -84,7 +84,7 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
 
     # Vary regularizer
     print "\nTest varying the regularizer alpha"
-    print "=================================="
+    print "----------------------------------"
 
     alphas = [0.0001, 0.001, 0.005, 0.01, 0.05, 0.1]
     accuracies = []
@@ -107,7 +107,7 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
 
     # Vary loss function
     print "\nTest varying the loss function"
-    print "=============================="
+    print "------------------------------"
 
     loss_functions = ['log', 'hinge', 'perceptron']
     x_values = []
@@ -133,6 +133,8 @@ def test_and_plot_gradient_descent(training_data, training_labels, test_data, te
 
 
 def main():
+    print "\nGradient Descent: MNIST Data"
+    print "============================"
     mnist_training_data, mnist_training_labels, mnist_testing_data, mnist_testing_labels = load_MNIST_data()
 
     # Convert the image data into two-dimensional arrays
