@@ -3,8 +3,6 @@ Provide functionality to read IDX encoded files.
 
 See http://www.fon.hum.uva.nl/praat/manual/IDX_file_format.html for a general description
 of the IDX format and http://yann.lecun.com/exdb/mnist/ for a specific example
-
-Author: Jeremy Dormitzer
 """
 
 __all__ = ["read"]
