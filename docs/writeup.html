@@ -1,29 +1,42 @@
-<h1 id="write-up" class="deep-link"><a href="#write-up">Write Up</a></h1>
-<h2 id="jeremy-dormitzer-aspen-hopkins-jerry-argyle-and-alex-brown" class="deep-link"><a href="#jeremy-dormitzer-aspen-hopkins-jerry-argyle-and-alex-brown">Jeremy Dormitzer, Aspen Hopkins, Jerry Argyle and Alex Brown</a></h2>
-<h2 id="gradient-descent" class="deep-link"><a href="#gradient-descent">Gradient Descent</a></h2>
-<ol>
-<li>Varying the iteration
-We varied the <code>n_iter</code> parameter, and found that 10 iterations gave the highest accuracy.</li>
-<li>Varying the learning rate
-We varied the <code>eta0</code> parameter, setting the <code>learning_rate</code> parameter to <code>&apos;constant&apos;</code>. We found that the highest learning rate, 0.9, gave the highest accuracy. However, we kept the number of iterations constant at 5, so if we had had more iterations we may have seen that a lower learning rate may have given higher accuracy.</li>
-<li>Varying the regularization parameter
-We varied the <code>alpha</code> parameter while keeping the <code>penalty</code> parameter constant at <code>&apos;l2&apos;</code>. We found that and <code>alpha</code> of 0.01 gave the highest accuracy. However, the <code>alpha</code> parameter is also used to compute the learning rate when the <code>learning_rate</code> is <code>&apos;optimal&apos;</code>, so it&apos;s hard to accurately judge the effect of <code>alpha</code>.</li>
-<li>Varying the loss function
-The results here were inconclusive. For the MNIST data, the <code>&apos;perceptron&apos;</code> loss function was most effective, although all loss functions resulted in accuracies within 3% of each other. The differences were more pronounced in the 20 Newsgroups dataset; the <code>&apos;hinge&apos;</code> loss function was the most effective by around 8%.</li>
-</ol>
-<h3 id="graphs" class="deep-link"><a href="#graphs">Graphs</a></h3>
-<p><img src="GD_MNIST.png" alt="Gradient Descent: MNIST Data">
-<img src="GD_20NG.png" alt="Gradient Descent: 20 Newsgroups Data"></p>
-<h2 id="neural-networks" class="deep-link"><a href="#neural-networks">Neural Networks</a></h2>
-<p>In general, our accuracies for neural network models were very low, between 10% and 40%. However, one model (the MNIST dataset with 10 hidden layer nodes) got a 90% accuracy. We are not sure why.</p>
-<ol>
-<li>Varying the number of hidden nodes
-We varied the <code>hidden_layer_sizes</code> attribute, and found that more hidden layer nodes correlated with higher accuracy.</li>
-<li>Varying the learning rate
-We varied the <code>learning_rate</code> parameter, and found that <code>&apos;constant&apos;</code> performed better than <code>&apos;adaptive&apos;</code>. However, all models had quite low accuracies.</li>
-<li>Varying the regularization parameter
-We varied the <code>alpha</code> parameter, and found that the results were all over the place. The accuracies only varied by about 2%, and there was no discernable pattern as to which <code>alpha</code> gave the highest accuracy.</li>
-</ol>
-<h3 id="graphs-1" class="deep-link"><a href="#graphs-1">Graphs</a></h3>
-<p><img src="NN_MNIST.png" alt="Neural Network: MNIST Data">
-<img src="NN_20NG.png" alt="Neural Network: 20 Newsgroups Data"></p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style type="text/css">code{white-space: pre;}</style>
+        <link rel="stylesheet" href="https://stackedit.io/res-min/themes/base.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1 id="write-up" class="deep-link"><a href="#write-up">Write Up</a></h1>
+            <h2 id="jeremy-dormitzer-aspen-hopkins-jerry-argyle-and-alex-brown" class="deep-link"><a href="#jeremy-dormitzer-aspen-hopkins-jerry-argyle-and-alex-brown">Jeremy Dormitzer, Aspen Hopkins, Jerry Argyle and Alex Brown</a></h2>
+            <h2 id="gradient-descent" class="deep-link"><a href="#gradient-descent">Gradient Descent</a></h2>
+            <ol>
+                <li>Varying the iteration
+                    We varied the <code>n_iter</code> parameter, and found that 10 iterations gave the highest accuracy.</li>
+                <li>Varying the learning rate
+                    We varied the <code>eta0</code> parameter, setting the <code>learning_rate</code> parameter to <code>&apos;constant&apos;</code>. We found that the highest learning rate, 0.9, gave the highest accuracy. However, we kept the number of iterations constant at 5, so if we had had more iterations we may have seen that a lower learning rate may have given higher accuracy.</li>
+                <li>Varying the regularization parameter
+                    We varied the <code>alpha</code> parameter while keeping the <code>penalty</code> parameter constant at <code>&apos;l2&apos;</code>. We found that and <code>alpha</code> of 0.01 gave the highest accuracy. However, the <code>alpha</code> parameter is also used to compute the learning rate when the <code>learning_rate</code> is <code>&apos;optimal&apos;</code>, so it&apos;s hard to accurately judge the effect of <code>alpha</code>.</li>
+                <li>Varying the loss function
+                    The results here were inconclusive. For the MNIST data, the <code>&apos;perceptron&apos;</code> loss function was most effective, although all loss functions resulted in accuracies within 3% of each other. The differences were more pronounced in the 20 Newsgroups dataset; the <code>&apos;hinge&apos;</code> loss function was the most effective by around 8%.</li>
+            </ol>
+            <h3 id="graphs" class="deep-link"><a href="#graphs">Graphs</a></h3>
+            <p><img src="GD_MNIST.png" alt="Gradient Descent: MNIST Data">
+                <img src="GD_20NG.png" alt="Gradient Descent: 20 Newsgroups Data"></p>
+                <h2 id="neural-networks" class="deep-link"><a href="#neural-networks">Neural Networks</a></h2>
+                <p>In general, our accuracies for neural network models were very low, between 10% and 40%. However, one model (the MNIST dataset with 10 hidden layer nodes) got a 90% accuracy. We are not sure why.</p>
+                <ol>
+                    <li>Varying the number of hidden nodes
+                        We varied the <code>hidden_layer_sizes</code> attribute, and found that more hidden layer nodes correlated with higher accuracy.</li>
+                    <li>Varying the learning rate
+                        We varied the <code>learning_rate</code> parameter, and found that <code>&apos;constant&apos;</code> performed better than <code>&apos;adaptive&apos;</code>. However, all models had quite low accuracies.</li>
+                    <li>Varying the regularization parameter
+                        We varied the <code>alpha</code> parameter, and found that the results were all over the place. The accuracies only varied by about 2%, and there was no discernable pattern as to which <code>alpha</code> gave the highest accuracy.</li>
+                </ol>
+                <h3 id="graphs-1" class="deep-link"><a href="#graphs-1">Graphs</a></h3>
+                <p><img src="NN_MNIST.png" alt="Neural Network: MNIST Data">
+                    <img src="NN_20NG.png" alt="Neural Network: 20 Newsgroups Data"></p>
+        </div>
+    </body>
+</html>

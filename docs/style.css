@@ -1,0 +1,13 @@
+body {
+    font-size: 21px;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+img: {
+    width: 100%;
+    height: auto;
+}
