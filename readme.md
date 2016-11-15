@@ -17,4 +17,4 @@ $ python code/main.py
 ```
 
 ## Write-up
-The write-up can be found [here](https://jdormit.github.io/cs-301-project-2/writeup.html).
+The write-up can be found [here](https://jdormit.github.io/cmpt-301-project-2/writeup.html).
