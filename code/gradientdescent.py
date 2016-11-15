@@ -35,7 +35,7 @@ class GradientDescent:
     def train(self, data, labels):
         """
         Train the classifier.
-
+\
         Arguments:
             data -- A numpy array representing the training data.
             labels -- A numpy array representing the training labels.
@@ -55,5 +55,5 @@ class GradientDescent:
                       testing data examples.
         """
         predictions = self.classifier.predict(data)
-        error = mean(predictions != labels)
+        error = mean(predictions == labels)
         return error
