@@ -5,6 +5,9 @@ Load the data and train the models, varying the hyperparameters. Output graphs o
 import idxreader
 from gradientdescent import GradientDescent as gradient_descent_model
 from neuralnetwork import NeuralNetwork as neural_network_model
+
+from sklearn.datasets import fetch_20newsgroups_vectorized
+
 from os import path
 from sys import stdout
 from matplotlib import pyplot as plt
@@ -24,6 +27,21 @@ def load_MNIST_data():
     training_labels = idxreader.read(training_labels_filepath)
     test_data = idxreader.read(test_data_filepath)
     test_labels = idxreader.read(test_labels_filepath)
+
+    return training_data, training_labels, test_data, test_labels
+
+
+def load_20_newsgroups_data():
+    """
+    Load the 20 newsgroups dataset.
+    """
+    newsgroups_train = fetch_20newsgroups_vectorized(subset="train")
+    newsgroups_test = fetch_20newsgroups_vectorized(subset="test")
+
+    training_data = newsgroups_train.data
+    training_labels = newsgroups_train.target
+    test_data = newsgroups_test.data
+    test_labels = newsgroups_test.target
 
     return training_data, training_labels, test_data, test_labels
 
@@ -219,7 +237,7 @@ def main():
     print "\nGradient Descent: MNIST Data"
     print "============================"
 
-    mnist_gradient_descent_fig = plt.figure(1, figsize=(10,10))
+    mnist_gradient_descent_fig = plt.figure(1, figsize=(12, 12))
     mnist_gradient_descent_fig.suptitle("MNIST Data: Gradient Descent Model")
 
     test_and_plot_gradient_descent(mnist_training_data, mnist_training_labels, mnist_testing_data, mnist_testing_labels, mnist_gradient_descent_fig)
@@ -227,12 +245,31 @@ def main():
     print "\nNeural Network: MNIST Data"
     print "=========================="
 
-    mnist_neural_network_fig = plt.figure(2, figsize=(10,10))
+    mnist_neural_network_fig = plt.figure(2, figsize=(14, 6))
     mnist_neural_network_fig.suptitle("MNIST Data: Neural Network Model")
 
     test_and_plot_neural_network(mnist_training_data, mnist_training_labels, mnist_testing_data, mnist_testing_labels, mnist_neural_network_fig)
 
-    plt.subplots_adjust(wspace=0.4, hspace=0.4)
+    print "\nLoading 20 newsgroups data..."
+    newsgroups_training_data, newsgroups_training_labels, newsgroups_testing_data, newsgroups_testing_labels = load_20_newsgroups_data()
+
+    print "\nGradient Descent: 20 Newsgroups Data"
+    print "===================================="
+
+    newsgroups_gradient_descent_fig = plt.figure(3, figsize=(12, 12))
+    newsgroups_gradient_descent_fig.suptitle("20 Newsgroups Data: Gradient Descent Model")
+
+    test_and_plot_gradient_descent(newsgroups_training_data, newsgroups_training_labels, newsgroups_testing_data, newsgroups_testing_labels, newsgroups_gradient_descent_fig)
+
+    print "\nNeural Network: 20 Newsgroups Data"
+    print "=================================="
+
+    newsgroups_neural_network_fig = plt.figure(4, figsize=(14, 6))
+    newsgroups_neural_network_fig.suptitle("20 Newsgroups Data: Neural Network Model")
+
+    test_and_plot_neural_network(newsgroups_training_data, newsgroups_training_labels, newsgroups_testing_data, newsgroups_testing_labels, newsgroups_neural_network_fig)
+
+    plt.subplots_adjust(wspace=0.3, hspace=0.3)
     plt.show()
 
 if __name__ == "__main__":
