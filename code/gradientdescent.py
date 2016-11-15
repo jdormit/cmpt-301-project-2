@@ -55,5 +55,5 @@ class GradientDescent:
                       testing data examples.
         """
         predictions = self.classifier.predict(data)
-        error = mean(predictions == labels)
-        return error
+        accuracy = mean(predictions == labels)
+        return accuracy
