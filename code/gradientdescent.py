@@ -35,7 +35,7 @@ class GradientDescent:
     def train(self, data, labels):
         """
         Train the classifier.
-\
+
         Arguments:
             data -- A numpy array representing the training data.
             labels -- A numpy array representing the training labels.
